@@ -1,0 +1,33 @@
+﻿@page
+@model Youtube_CreateX.Areas.Admin.Pages.Services.IndexModel
+@{
+    ViewData["Title"] = "Услуги";
+}
+<h1>Услуги</h1>
+<p>
+    <a asp-page="Create" class="btn btn-primary">Добавить услугу</a>
+</p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Порядок</th>
+            <th>Опубликовано</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ServicesList)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.DisplayOrder</td>
+                <td>@(item.IsPublished ? "Да" : "Нет")</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Редактировать</a>
+                    <a asp-page="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

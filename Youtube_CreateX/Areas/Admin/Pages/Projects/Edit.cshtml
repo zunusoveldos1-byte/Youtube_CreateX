@@ -1,0 +1,56 @@
+﻿@page "{id:int}"
+@model Youtube_CreateX.Areas.Admin.Pages.Projects.EditModel
+@{
+    ViewData["Title"] = "Редактирование проекта";
+}
+<h1>Редактировать проект</h1>
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Project.Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Project.Title"></label>
+        <input asp-for="Project.Title" class="form-control" />
+        <span asp-validation-for="Project.Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Project.Description"></label>
+        <textarea asp-for="Project.Description" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="Project.Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Project.Client"></label>
+        <input asp-for="Project.Client" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Project.CompletionDate">Дата завершения</label>
+        <input asp-for="Project.CompletionDate" type="date" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Project.ProjectUrl">Ссылка на проект</label>
+        <input asp-for="Project.ProjectUrl" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Project.Category">Категория</label>
+        <input asp-for="Project.Category" class="form-control" />
+    </div>
+    @if (!string.IsNullOrEmpty(Model.Project.ImagePath))
+    {
+        <div class="form-group">
+            <label>Текущее изображение</label><br />
+            <img src="@Model.Project.ImagePath" style="max-height:150px;" />
+        </div>
+    }
+    <div class="form-group">
+        <label asp-for="ImageFile">Новое изображение (оставьте пустым, если не меняете)</label>
+        <input asp-for="ImageFile" type="file" class="form-control" />
+    </div>
+    <div class="form-check">
+        <input asp-for="Project.IsPublished" class="form-check-input" />
+        <label asp-for="Project.IsPublished">Опубликовать</label>
+    </div>
+    <button type="submit" class="btn btn-success">Сохранить</button>
+    <a asp-page="Index" class="btn btn-secondary">Отмена</a>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

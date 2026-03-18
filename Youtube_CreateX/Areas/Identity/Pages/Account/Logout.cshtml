@@ -1,0 +1,93 @@
+﻿@page
+@model LogoutModel
+@{
+    ViewData["Title"] = "Выход из системы";
+}
+
+<style>
+    /* Центрирование контейнера */
+    .logout-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 60vh; /* Занимает большую часть высоты экрана */
+        text-align: center;
+    }
+
+    .logout-card {
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        max-width: 450px;
+        width: 100%;
+    }
+
+        .logout-card h1 {
+            font-size: 24px;
+            color: #1E212C;
+            margin-bottom: 20px;
+        }
+
+        .logout-card p {
+            color: #787A80;
+            margin-bottom: 30px;
+        }
+
+    /* Используем твой стиль кнопок из предыдущего вопроса */
+    .btn-logout {
+        display: inline-block;
+        padding: 12px 35px;
+        border: 2px solid #FF5A30;
+        background: #FF5A30;
+        color: #ffffff;
+        font-weight: bold;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+    }
+
+        .btn-logout:hover {
+            background: transparent;
+            color: #FF5A30;
+            transform: translateY(-2px);
+        }
+
+    .btn-cancel {
+        display: block;
+        margin-top: 15px;
+        color: #787A80;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+        .btn-cancel:hover {
+            color: #1E212C;
+            text-decoration: underline;
+        }
+</style>
+
+<div class="logout-container">
+    <div class="logout-card">
+        @if (User.Identity?.IsAuthenticated ?? false)
+        {
+            <h1>@ViewData["Title"]</h1>
+            <p>Вы уверены, что хотите выйти из своей учетной записи? Мы будем ждать вашего возвращения!</p>
+
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                <button type="submit" class="btn-logout">Да, выйти из системы</button>
+            </form>
+
+            <a href="/" class="btn-cancel">Нет, я передумал</a>
+        }
+        else
+        {
+            <h1>Вы вышли</h1>
+            <p>Вы успешно покинули приложение. Ждем вас снова!</p>
+            <a href="/" class="btn-logout" style="text-align:center">На главную</a>
+        }
+    </div>
+</div>

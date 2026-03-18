@@ -1,0 +1,251 @@
+﻿@page
+@model Youtube_CreateX.Pages.Contacts.ContactsModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Createx</title>
+    <link rel="stylesheet" href="~/css/contacts.css" asp-append-version="true">
+</head>
+<body>
+    <div class="top-wrapper">
+
+        <header class="header">
+            <div class="container">
+                <nav class="header__nav">
+                    <a asp-page="/Index" class="header__nav-logo-link">
+                        <img src="~/img/header/logo(3).svg" asp-append-version="true" alt="Логотип Createx" class="header__nav-logo">
+                    </a>
+                    <ul class="header__nav-ul">
+                        <li><a asp-page="/AboutUs/About" class="header__nav-link">О нас</a></li>
+                        <li><a asp-page="/Services/Services" class="header__nav-link">Услуги</a></li>
+                        <li><a asp-page="/Work/Work" class="header__nav-link">Работы</a></li>
+                        <li><a asp-page="/News/News" class="header__nav-link">Новости</a></li>
+                        <li><a asp-page="/Contacts/Contacts" class="header__nav-link active">Контакты</a></li>
+                    </ul>
+                    <div class="header__nav-contacts">
+                        <div class="header__nav-contact">
+                            <img src="~/img/header/iPhone(2).svg" asp-append-version="true" alt="Телефон">
+                            <div class="contact-text">
+                                <div class="label">Позвоните нам</div>
+                                <div class="value">(405) 555-0128</div>
+                            </div>
+                        </div>
+                        <div class="header__nav-contact">
+                            <img src="~/img/header/Chat(2).svg" asp-append-version="true" alt="Чат">
+                            <div class="contact-text">
+                                <div class="label">Напишите нам</div>
+                                <div class="value">hello@createx.com</div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="container">
+                <ul class="breadcrumbs">
+                    <li><a asp-page="/Index">Главная</a></li>
+                    <li><span>Контакты</span></li>
+                </ul>
+                <h1 class="hero__title">КОНТАКТЫ</h1>
+                <p class="hero__desc">
+                    Свяжитесь с нами по любым вопросам строительства. Мы всегда рады вашим вопросам и комментариям.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <section class="contacts-section container">
+        <div class="contacts-section__header">
+            <h2 class="contacts-section__title">Свяжитесь с нами</h2>
+            <p class="contacts-section__subtitle">Пожалуйста, заполните форму. Детальная информация поможет нам подготовить индивидуальное предложение.</p>
+        </div>
+
+        <div class="contacts-section__wrapper">
+            <div class="contacts-section__image">
+                <img src="~/img/contacts-form/image(8).svg" asp-append-version="true" alt="Контактное лицо">
+            </div>
+
+            <div class="contacts-section__form-container">
+                <form class="contact-form" method="post">
+                    <div class="contact-form__grid">
+                        <div class="contact-form__field">
+                            <label>Имя*</label>
+                            <input type="text" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="contact-form__field">
+                            <label>Меня интересует</label>
+                            <select>
+                                <option>Дизайн интерьера</option>
+                                <option>Строительство</option>
+                            </select>
+                        </div>
+                        <div class="contact-form__field">
+                            <label>Телефон*</label>
+                            <input type="tel" placeholder="Ваш номер телефона" required>
+                        </div>
+                        <div class="contact-form__field">
+                            <label>Местоположение*</label>
+                            <select>
+                                <option>Нью-Йорк</option>
+                            </select>
+                        </div>
+                        <div class="contact-form__field contact-form__field--full">
+                            <label>Email</label>
+                            <input type="email" placeholder="Ваш рабочий email">
+                        </div>
+                        <div class="contact-form__field contact-form__field--full">
+                            <label>Сообщение*</label>
+                            <textarea placeholder="Ваше сообщение"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="contact-form__footer">
+                        <label class="checkbox">
+                            <input type="checkbox" required checked>
+                            <span>Я согласен получать информацию от Createx Construction Bureau.</span>
+                        </label>
+                        <button type="submit" class="btn btn--fill contact-btn">ОТПРАВИТЬ ЗАПРОС</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="offices">
+        <div class="container">
+            <div class="offices__header">
+                <h2 class="offices__title">Наши офисы</h2>
+                <p class="offices__subtitle">Позвоните нам, напишите или посетите наш офис. Мы с нетерпением ждем вашего обращения!</p>
+            </div>
+
+            <div class="offices__grid">
+                <div class="office-card">
+                    <h3 class="office-card__city">Нью-Йорк, США</h3>
+                    <address class="office-card__address">
+                        8502 Preston Rd. Inglewood, New York 98380
+                        <a href="#" class="office-card__map-link">Посмотреть на карте</a>
+                    </address>
+                    <div class="office-card__contacts">
+                        <p><span>Телефон:</span> (405) 555-0128</p>
+                        <p><span>Email:</span> hello@createx.com</p>
+                        <p><span>Часы работы:</span> Пн - Пт 9:00 - 18:00</p>
+                    </div>
+                </div>
+
+                <div class="office-card">
+                    <h3 class="office-card__city">Нью-Джерси, США</h3>
+                    <address class="office-card__address">
+                        2464 Royal Ln. Mesa, New Jersey 45463
+                        <a href="#" class="office-card__map-link">Посмотреть на карте</a>
+                    </address>
+                    <div class="office-card__contacts">
+                        <p><span>Телефон:</span> (808) 555-0111</p>
+                        <p><span>Email:</span> hello@createx.com</p>
+                        <p><span>Часы работы:</span> Пн - Пт 9:00 - 18:00</p>
+                    </div>
+                </div>
+
+                <div class="office-card">
+                    <h3 class="office-card__city">Сан-Франциско, США</h3>
+                    <address class="office-card__address">
+                        8502 Preston Rd. Inglewood, San Francisco 98380
+                        <a href="#" class="office-card__map-link">Посмотреть на карте</a>
+                    </address>
+                    <div class="office-card__contacts">
+                        <p><span>Телефон:</span> (505) 555-0125</p>
+                        <p><span>Email:</span> hello@createx.com</p>
+                        <p><span>Часы работы:</span> Пн - Пт 10:00 - 19:00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="offices__social">
+                <h3 class="offices__social-title">Мы в соцсетях</h3>
+                <div class="offices__social-links">
+                    <a href="#"><img src="~/img/contacts/Whatsapp(1).svg" asp-append-version="true" alt="WA"></a>
+                    <a href="#"><img src="~/img/contacts/Messanger(1).svg" asp-append-version="true" alt="MS"></a>
+                    <a href="#"><img src="~/img/contacts/Facebook(1).svg" asp-append-version="true" alt="FB"></a>
+                    <a href="#"><img src="~/img/contacts/Twitter(1).svg" asp-append-version="true" alt="TW"></a>
+                    <a href="#"><img src="~/img/contacts/YouTube(2).svg" asp-append-version="true" alt="YT"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__top">
+                <div class="footer__column footer__column--info">
+                    <div class="footer__brand">
+                        <img src="~/img/footer/logo(2).svg" asp-append-version="true" alt="Createx" class="footer__logo">
+                        <div class="footer__socials">
+                            <a href="#" class="footer__social-link"><img src="~/img/footer/whatsapp.svg" asp-append-version="true" alt="WA"></a>
+                            <a href="#" class="footer__social-link"><img src="~/img/footer/Messanger.svg" asp-append-version="true" alt="MS"></a>
+                            <a href="#" class="footer__social-link"><img src="~/img/footer/facebook.svg" asp-append-version="true" alt="FB"></a>
+                            <a href="#" class="footer__social-link"><img src="~/img/footer/twitter.svg" asp-append-version="true" alt="TW"></a>
+                            <a href="#" class="footer__social-link"><img src="~/img/footer/youtube.svg" asp-append-version="true" alt="YT"></a>
+                        </div>
+                    </div>
+                    <p class="footer__description">
+                        Createx Construction Bureau успешно работает на строительном рынке США с 2000 года. Мы гордимся тем, что предлагаем вам качественное строительство и образцовый сервис. Наша миссия — устанавливать самые высокие стандарты в строительной сфере.
+                    </p>
+                </div>
+                <div class="footer__column footer__column--subscribe">
+                    <h3 class="footer__title">Оставайтесь на связи</h3>
+                    <form class="subscribe-form">
+                        <input type="email" class="subscribe-form__input" placeholder="Ваш email">
+                        <button type="submit" class="subscribe-form__button">ПОДПИСАТЬСЯ</button>
+                    </form>
+                    <p class="footer__note">*Подпишитесь на нашу рассылку, чтобы получать новости и ранние обновления от Createx Construction Bureau.</p>
+                </div>
+            </div>
+
+            <div class="footer__middle">
+                <div class="footer__column">
+                    <h3 class="footer__title">ГЛАВНЫЙ ОФИС</h3>
+                    <address class="footer__address">
+                        <span><strong>Адрес:</strong> 8502 Preston Rd. Inglewood, New York</span>
+                        <span><strong>Телефон:</strong> (405) 555-0128</span>
+                        <span><strong>Email:</strong> hello@createx.com</span>
+                    </address>
+                </div>
+                <div class="footer__column">
+                    <h3 class="footer__title">О КОМПАНИИ</h3>
+                    <nav class="footer__nav">
+                        <a asp-page="/AboutUs/About" class="footer__link">О нас</a>
+                        <a href="#" class="footer__link">Вакансии</a>
+                        <a asp-page="/Contacts/Contacts" class="footer__link">Контакты</a>
+                    </nav>
+                </div>
+                <div class="footer__column">
+                    <h3 class="footer__title">НАШ ОПЫТ</h3>
+                    <nav class="footer__nav">
+                        <a asp-page="/Services/Services" class="footer__link">Услуги</a>
+                        <a asp-page="/Work/Work" class="footer__link">Работы</a>
+                        <a asp-page="/News/News" class="footer__link">Новости</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <div class="footer__copyright">
+                    © Все права защищены. Сделано с <span style="color: #FF5A30;"><img src="~/img/footer/Heart(1).svg" asp-append-version="true" alt="❤"></span> Createx Studio
+                </div>
+                <a href="#" class="footer__go-top">
+                    НАВЕРХ
+                    <span class="footer__up-icon"></span>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

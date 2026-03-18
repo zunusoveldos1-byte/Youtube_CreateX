@@ -1,0 +1,45 @@
+﻿@page "{id:int}"
+@model Youtube_CreateX.Areas.Admin.Pages.News.EditModel
+@{
+    ViewData["Title"] = "Редактирование новости";
+}
+<h1>Редактировать новость</h1>
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="News.Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="News.Title"></label>
+        <input asp-for="News.Title" class="form-control" />
+        <span asp-validation-for="News.Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="News.Content"></label>
+        <textarea asp-for="News.Content" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="News.Content" class="text-danger"></span>
+    </div>
+    @if (!string.IsNullOrEmpty(Model.News.ImagePath))
+    {
+        <div class="form-group">
+            <label>Текущее изображение</label><br />
+            <img src="@Model.News.ImagePath" style="max-height:150px;" />
+        </div>
+    }
+    <div class="form-group">
+        <label asp-for="ImageFile">Новое изображение (оставьте пустым, если не меняете)</label>
+        <input asp-for="ImageFile" type="file" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="News.Category"></label>
+        <input asp-for="News.Category" class="form-control" />
+        <span asp-validation-for="News.Category" class="text-danger"></span>
+    </div>
+    <div class="form-check">
+        <input asp-for="News.IsPublished" class="form-check-input" />
+        <label asp-for="News.IsPublished">Опубликовать</label>
+    </div>
+    <button type="submit" class="btn btn-success">Сохранить</button>
+    <a asp-page="Index" class="btn btn-secondary">Отмена</a>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

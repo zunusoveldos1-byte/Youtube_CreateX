@@ -1,0 +1,465 @@
+﻿@page
+@model Youtube_CreateX.Pages.AboutUs.IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>О нас - Createx</title>
+    <link rel="stylesheet" href="~/css/about.css" asp-append-version="true" />
+</head>
+
+<body>
+    <div class="top-wrapper">
+
+        <header class="header">
+            <div class="container">
+                <nav class="header__nav">
+                    <a asp-page="/Index" class="header__nav-logo-link">
+                        <img src="~/img/header/logo(3).svg" asp-append-version="true" alt="Логотип Createx" class="header__nav-logo">
+                    </a>
+                    <ul class="header__nav-ul">
+                        <li><a asp-page="/AboutUs/About" class="header__nav-link active">О нас</a></li>
+                        <li><a asp-page="/Services/Services" class="header__nav-link">Услуги</a></li>
+                        <li><a asp-page="/Work/Work" class="header__nav-link">Работы</a></li>
+                        <li><a asp-page="/News/News" class="header__nav-link">Новости</a></li>
+                        <li><a asp-page="/Contacts/Contacts" class="header__nav-link">Контакты</a></li>
+                    </ul>
+                    <div class="header__nav-contacts">
+                        <div class="header__nav-contact">
+                            <img src="~/img/header/iPhone(2).svg" asp-append-version="true" alt="Телефон">
+                            <div class="contact-text">
+                                <div class="label">Позвоните нам</div>
+                                <div class="value">(405) 555-0128</div>
+                            </div>
+                        </div>
+                        <div class="header__nav-contact">
+                            <img src="~/img/header/Chat(2).svg" asp-append-version="true" alt="Чат">
+                            <div class="contact-text">
+                                <div class="label">Напишите нам</div>
+                                <div class="value">hello@createx.com</div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="container">
+                <ul class="breadcrumbs">
+                    <li><a asp-page="/Index">Главная</a></li>
+                    <li><span>О нас</span></li>
+                </ul>
+                <h1 class="hero__title">О НАС</h1>
+                <p class="hero__desc">
+                    Createx Construction Bureau успешно работает на строительном рынке США с 2000 года. Мы гордимся тем, что предлагаем вам качественное строительство и образцовый сервис.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <section class="statistics container">
+        <div class="statistics__grid">
+            <div class="statistics__item">
+                <div class="statistics__icon">
+                    <img src="~/img/statics/Vector(1).svg" asp-append-version="true" alt="Клиенты">
+                </div>
+                <div class="statistics__value">60%</div>
+                <p class="statistics__text">Клиентов по рекомендации</p>
+            </div>
+
+            <div class="statistics__item">
+                <div class="statistics__icon">
+                    <img src="~/img/statics/ic-painting(1).svg" asp-append-version="true" alt="Отремонтировано">
+                </div>
+                <div class="statistics__value">2400+</div>
+                <p class="statistics__text">Отремонтированных квартир</p>
+            </div>
+
+            <div class="statistics__item">
+                <div class="statistics__icon">
+                    <img src="~/img/statics/ic-helmet.svg" asp-append-version="true" alt="Специалисты">
+                </div>
+                <div class="statistics__value">670</div>
+                <p class="statistics__text">Квалифицированных специалистов</p>
+            </div>
+
+            <div class="statistics__item">
+                <div class="statistics__icon">
+                    <img src="~/img/statics/ic-pantone(1).svg" asp-append-version="true" alt="Отделочные работы">
+                </div>
+                <div class="statistics__value">150 000+ м<sup>2</sup></div>
+                <p class="statistics__text">Выполнено отделочных работ</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="ceo-quote container">
+        <div class="ceo-quote__wrapper">
+            <div class="ceo-quote__image">
+                <img src="~/img/ceo/image(19).svg" asp-append-version="true" alt="Кортни Александр">
+            </div>
+
+            <div class="ceo-quote__card">
+                <div class="ceo-quote__icon">
+                    <img src="~/img/ceo/braces.svg" asp-append-version="true" alt="кавычки">
+                </div>
+
+                <div class="ceo-quote__content">
+                    <p>В строительстве нет мелочей. Мы возводим не просто стены из бетона и кирпича — мы создаем пространство для жизни и основу для будущего.</p>
+                    <p>Настоящее мастерство измеряется не скоростью сдачи объекта, а тем, насколько уверенно чувствует себя человек под крышей, которую мы построили. Мы строим так, будто строим для своих детей</p>
+                </div>
+
+                <div class="ceo-quote__author">
+                    <div class="author-info">
+                        <h4 class="author-name">Кортни Александр</h4>
+                        <p class="author-pos">Генеральный директор - Createx Construction Bureau</p>
+                    </div>
+                    <div class="author-signature">
+                        <img src="~/img/ceo/signature.svg" asp-append-version="true" alt="Подпись">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-history">
+        <div class="container">
+            <!-- ... existing code ... -->
+            <div class="history">
+                <div class="history__header">
+                    <h2 class="history__title">Наша история</h2>
+                    <div class="history__slider-arrows">
+                        <button class="arrow-prev" id="historyPrev">
+                            <img src="~/img/values/Left.svg" asp-append-version="true" alt="Предыдущий">
+                        </button>
+                        <button class="arrow-next" id="historyNext">
+                            <img src="~/img/values/Right(2).svg" asp-append-version="true" alt="Следующий">
+                        </button>
+                    </div>
+                </div>
+
+                <div class="history__content">
+                    <aside class="history__nav">
+                        <ul class="history__list" id="historyList">
+                            <li class="history__item active"
+                                data-img="/img/history/present.png"
+                                data-desc="Сегодня CreateX является лидером строительной отрасли, предлагая инновационные и устойчивые решения по всему миру. Наша команда из более чем 500 профессионалов продолжает формировать горизонты и сообщества с честностью и мастерством.">
+                                Настоящее
+                            </li>
+                            <li class="history__item"
+                                data-img="/img/history/march-2019.png"
+                                data-desc="В марте 2019 года мы запустили наше подразделение «Зелёное строительство», сосредоточенное на экологичных материалах и энергоэффективных проектах. Эта инициатива позволила снизить углеродный след наших проектов на 30% в первый же год.">
+                                Март 2019
+                            </li>
+                            <li class="history__item"
+                                data-img="/img/history/november-2018.png"
+                                data-desc="В ноябре 2018 года завершилось строительство знаковой «Башни Риверсайд» – нашего самого высокого жилого комплекса на сегодняшний день, оснащённого технологиями «умного дома» и панорамными видами на город.">
+                                Ноябрь 2018
+                            </li>
+                            <li class="history__item"
+                                data-img="/img/history/july-2015.png"
+                                data-desc="К июлю 2015 года мы расширили свою деятельность на Ближний Восток, заключив контракт на 120 миллионов долларов на строительство «Оазис Бизнес Парк» в Дубае. Эта веха закрепила наше присутствие на международном рынке.">
+                                Июль 2015
+                            </li>
+                            <li class="history__item"
+                                data-img="/img/history/august-2010.png"
+                                data-desc="В августе 2010 года мы получили престижную «Международную премию по безопасности» за образцовую культуру безопасности на рабочем месте, достигнув более 2 миллионов человеко-часов без несчастных случаев с потерей рабочего времени.">
+                                Август 2010
+                            </li>
+                            <li class="history__item"
+                                data-img="/img/history/february-2007.png"
+                                data-desc="В феврале 2007 года мы открыли наш второй региональный офис в Манчестере, Великобритания, чтобы лучше обслуживать европейских клиентов. Это расширение позволило нам одновременно управлять несколькими крупномасштабными проектами.">
+                                Февраль 2007
+                            </li>
+                            <li class="history__item"
+                                data-img="/img/history/may-2004.png"
+                                data-desc="Май 2004 года ознаменовался нашим первым международным проектом – курортом «Сансет» в Испании. Этот проект потребовал освоения новых нормативных требований и укрепил нашу репутацию в реализации сложных зарубежных проектов.">
+                                Май 2004
+                            </li>
+                            <li class="history__item"
+                                data-img="/img/history/october-2001.png"
+                                data-desc="К октябрю 2001 года мы завершили строительство 50 коммерческих зданий в нашем родном штате, включая больницы, школы и торговые центры, став надёжным именем в местной инфраструктуре.">
+                                Октябрь 2001
+                            </li>
+                            <li class="history__item"
+                                data-img="/img/history/june-2000.png"
+                                data-desc="CreateX была основана в июне 2000 года командой из трёх инженеров-новаторов с одним офисом и мечтой изменить строительную отрасль. Наш первый проект – небольшая реконструкция жилого дома – заложил основу для будущего роста.">
+                                Июнь 2000
+                            </li>
+                        </ul>
+                    </aside>
+
+                    <div class="history__info">
+                        <div class="history__image">
+                            <img id="historyImage" src="/img/history/present.png" alt="Строительная площадка">
+                        </div>
+                        <p id="historyText" class="history__text">
+                            Сегодня CreateX является лидером строительной отрасли, предлагая инновационные и устойчивые решения по всему миру. Наша команда из более чем 500 профессионалов продолжает формировать горизонты и сообщества с честностью и мастерством.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="partners">
+        <div class="container">
+            <h2 class="partners__title">Наши партнёры</h2>
+            <p class="partners__subtitle">Мы поддерживаемся более чем 12 отраслевыми организациями и медиапартнёрами</p>
+
+            <div class="partners__grid">
+                <div class="partner-item">
+                    <img src="~/img/partners/client-logo.svg" asp-append-version="true" alt="InDepth Consulting">
+                </div>
+                <div class="partner-item">
+                    <img src="~/img/partners/client-logo-3.svg" asp-append-version="true" alt="Higher Fit">
+                </div>
+                <div class="partner-item">
+                    <img src="~/img/partners/client-logo-2.svg" asp-append-version="true" alt="Sentinal Consulting">
+                </div>
+                <div class="partner-item">
+                    <img src="~/img/partners/client-logo-5.svg" asp-append-version="true" alt="Happy Home">
+                </div>
+                <div class="partner-item">
+                    <img src="~/img/partners/client-logo-6.svg" asp-append-version="true" alt="For Sale">
+                </div>
+                <div class="partner-item">
+                    <img src="~/img/partners/client-logo.svg" asp-append-version="true" alt="Sunset Realty">
+                </div>
+                <div class="partner-item">
+                    <img src="~/img/partners/client-logo-11.svg" asp-append-version="true" alt="Atlantis Health">
+                </div>
+                <div class="partner-item">
+                    <img src="~/img/partners/client-logo-8.svg" asp-append-version="true" alt="Del Mar Strategy">
+                </div>
+                <div class="partner-item">
+                    <img src="~/img/partners/client-logo-9.svg" asp-append-version="true" alt="Complete Health">
+                </div>
+                <div class="partner-item">
+                    <img src="~/img/partners/client-logo-4.svg" asp-append-version="true" alt="National">
+                </div>
+                <div class="partner-item">
+                    <img src="~/img/partners/client-logo-10.svg" asp-append-version="true" alt="Ultimate Gym">
+                </div>
+                <div class="partner-item">
+                    <img src="~/img/partners/client-logo-8.svg" asp-append-version="true" alt="United Strategy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <div class="team-header">
+                <h2 class="team-title">Наша команда</h2>
+                <p class="team-subtitle">В основе Createx Construction Bureau — люди</p>
+            </div>
+
+            <div class="team-grid">
+                <article class="team-card">
+                    <div class="team-card__img-box">
+                        <img src="~/img/ourteam/image(21).svg" asp-append-version="true" alt="Кортни Александр" class="team-card__img">
+                        <div class="team-card__socials">
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Linked-In.svg" asp-append-version="true" alt="in"></a>
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Twitter(2).svg" asp-append-version="true" alt="tw"></a>
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Facebook(2).svg" asp-append-version="true" alt="fb"></a>
+                        </div>
+                    </div>
+                    <div class="team-card__info">
+                        <h3 class="team-card__name">Кортни Александр</h3>
+                        <p class="team-card__position">Генеральный директор, сооснователь</p>
+                    </div>
+                </article>
+
+                <article class="team-card">
+                    <div class="team-card__img-box">
+                        <img src="~/img/ourteam/image(22).svg" asp-append-version="true" alt="Кэлвин Фокс" class="team-card__img">
+                        <div class="team-card__socials">
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Linked-In.svg" asp-append-version="true" alt="in"></a>
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Twitter(2).svg" asp-append-version="true" alt="tw"></a>
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Facebook(2).svg" asp-append-version="true" alt="fb"></a>
+                        </div>
+                    </div>
+                    <div class="team-card__info">
+                        <h3 class="team-card__name">Кэлвин Фокс</h3>
+                        <p class="team-card__position">Технический директор, сооснователь</p>
+                    </div>
+                </article>
+
+                <article class="team-card">
+                    <div class="team-card__img-box">
+                        <img src="~/img/ourteam/image(23).svg" asp-append-version="true" alt="Джонни Лейн" class="team-card__img">
+                        <div class="team-card__socials">
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Linked-In.svg" asp-append-version="true" alt="in"></a>
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Twitter(2).svg" asp-append-version="true" alt="tw"></a>
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Facebook(2).svg" asp-append-version="true" alt="fb"></a>
+                        </div>
+                    </div>
+                    <div class="team-card__info">
+                        <h3 class="team-card__name">Джонни Лейн</h3>
+                        <p class="team-card__position">Руководитель коммерческого отдела</p>
+                    </div>
+                </article>
+
+                <article class="team-card">
+                    <div class="team-card__img-box">
+                        <img src="~/img/ourteam/image(24).svg" asp-append-version="true" alt="Дайан Маккой" class="team-card__img">
+                        <div class="team-card__socials">
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Linked-In.svg" asp-append-version="true" alt="in"></a>
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Twitter(2).svg" asp-append-version="true" alt="tw"></a>
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Facebook(2).svg" asp-append-version="true" alt="fb"></a>
+                        </div>
+                    </div>
+                    <div class="team-card__info">
+                        <h3 class="team-card__name">Дайан Маккой</h3>
+                        <p class="team-card__position">Директор по персоналу</p>
+                    </div>
+                </article>
+
+                <article class="team-card">
+                    <div class="team-card__img-box">
+                        <img src="~/img/ourteam/image(25).svg" asp-append-version="true" alt="Джудит Уоррен" class="team-card__img">
+                        <div class="team-card__socials">
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Linked-In.svg" asp-append-version="true" alt="in"></a>
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Twitter(2).svg" asp-append-version="true" alt="tw"></a>
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Facebook(2).svg" asp-append-version="true" alt="fb"></a>
+                        </div>
+                    </div>
+                    <div class="team-card__info">
+                        <h3 class="team-card__name">Джудит Уоррен</h3>
+                        <p class="team-card__position">Ведущий бухгалтер</p>
+                    </div>
+                </article>
+
+                <article class="team-card">
+                    <div class="team-card__img-box">
+                        <img src="~/img/ourteam/image(26).svg" asp-append-version="true" alt="Флойд Симмонс" class="team-card__img">
+                        <div class="team-card__socials">
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Linked-In.svg" asp-append-version="true" alt="in"></a>
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Twitter(2).svg" asp-append-version="true" alt="tw"></a>
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Facebook(2).svg" asp-append-version="true" alt="fb"></a>
+                        </div>
+                    </div>
+                    <div class="team-card__info">
+                        <h3 class="team-card__name">Флойд Симмонс</h3>
+                        <p class="team-card__position">Финансовый директор</p>
+                    </div>
+                </article>
+
+                <article class="team-card">
+                    <div class="team-card__img-box">
+                        <img src="~/img/ourteam/image(27).svg" asp-append-version="true" alt="Серенити Эдвардс" class="team-card__img">
+                        <div class="team-card__socials">
+                            <a href="https://www.linkedin.com/in/serenityedwardsotds/" class="social-icon"><img src="~/img/ourteam/Linked-In.svg" asp-append-version="true" alt="in"></a>
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Twitter(2).svg" asp-append-version="true" alt="tw"></a>
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Facebook(2).svg" asp-append-version="true" alt="fb"></a>
+                        </div>
+                    </div>
+                    <div class="team-card__info">
+                        <h3 class="team-card__name">Серенити Эдвардс</h3>
+                        <p class="team-card__position">Директор по маркетингу</p>
+                    </div>
+                </article>
+
+                <article class="team-card">
+                    <div class="team-card__img-box">
+                        <img src="~/img/ourteam/image(28).svg" asp-append-version="true" alt="Шон Эдвардс" class="team-card__img">
+                        <div class="team-card__socials">
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Linked-In.svg" asp-append-version="true" alt="in"></a>
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Twitter(2).svg" asp-append-version="true" alt="tw"></a>
+                            <a href="#" class="social-icon"><img src="~/img/ourteam/Facebook(2).svg" asp-append-version="true" alt="fb"></a>
+                        </div>
+                    </div>
+                    <div class="team-card__info">
+                        <h3 class="team-card__name">Шон Эдвардс</h3>
+                        <p class="team-card__position">Ведущий технический специалист</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="team-footer">
+                <p>Станьте частью лучшей команды на строительном рынке США. <a href="#">Вакансии</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="map">
+        <h3 class="map__h3">Мы работаем по всему миру</h3>
+        <img class="map__img" src="~/img/map/map.svg" asp-append-version="true" alt="Карта мира">
+    </section>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__top">
+                <div class="footer__column footer__column--info">
+                    <div class="footer__brand">
+                        <img src="~/img/footer/logo(2).svg" asp-append-version="true" alt="Createx" class="footer__logo">
+                        <div class="footer__socials">
+                            <a href="#" class="footer__social-link"><img src="~/img/footer/whatsapp.svg" asp-append-version="true" alt="WA"></a>
+                            <a href="#" class="footer__social-link"><img src="~/img/footer/Messanger.svg" asp-append-version="true" alt="MS"></a>
+                            <a href="#" class="footer__social-link"><img src="~/img/footer/facebook.svg" asp-append-version="true" alt="FB"></a>
+                            <a href="#" class="footer__social-link"><img src="~/img/footer/twitter.svg" asp-append-version="true" alt="TW"></a>
+                            <a href="#" class="footer__social-link"><img src="~/img/footer/youtube.svg" asp-append-version="true" alt="YT"></a>
+                        </div>
+                    </div>
+                    <p class="footer__description">
+                        Createx Construction Bureau успешно работает на строительном рынке США с 2000 года. Мы гордимся тем, что предлагаем вам качественное строительство и образцовый сервис. Наша миссия — устанавливать самые высокие стандарты в строительной сфере.
+                    </p>
+                </div>
+                <div class="footer__column footer__column--subscribe">
+                    <h3 class="footer__title">Оставайтесь на связи</h3>
+                    <form class="subscribe-form">
+                        <input type="email" class="subscribe-form__input" placeholder="Ваш email">
+                        <button type="submit" class="subscribe-form__button">ПОДПИСАТЬСЯ</button>
+                    </form>
+                    <p class="footer__note">*Подпишитесь на нашу рассылку, чтобы получать новости и ранние обновления от Createx Construction Bureau.</p>
+                </div>
+            </div>
+
+            <div class="footer__middle">
+                <div class="footer__column">
+                    <h3 class="footer__title">ГЛАВНЫЙ ОФИС</h3>
+                    <address class="footer__address">
+                        <span><strong>Адрес:</strong> 8502 Preston Rd. Inglewood, New York</span>
+                        <span><strong>Телефон:</strong> (405) 555-0128</span>
+                        <span><strong>Email:</strong> hello@createx.com</span>
+                    </address>
+                </div>
+                <div class="footer__column">
+                    <h3 class="footer__title">О КОМПАНИИ</h3>
+                    <nav class="footer__nav">
+                        <a asp-page="/AboutUs/About" class="footer__link">О нас</a>
+                        <a href="#" class="footer__link">Вакансии</a>
+                        <a asp-page="/Contacts/Contacts" class="footer__link">Контакты</a>
+                    </nav>
+                </div>
+                <div class="footer__column">
+                    <h3 class="footer__title">НАШ ОПЫТ</h3>
+                    <nav class="footer__nav">
+                        <a asp-page="/Services/Services" class="footer__link">Услуги</a>
+                        <a asp-page="/Work/Work" class="footer__link">Работы</a>
+                        <a asp-page="/News/News" class="footer__link">Новости</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <div class="footer__copyright">
+                    © Все права защищены. Сделано с <span style="color: #FF5A30;"><img src="~/img/footer/Heart(1).svg" asp-append-version="true" alt="❤"></span> Createx Studio
+                </div>
+                <a href="#" class="footer__go-top">
+                    НАВЕРХ
+                    <span class="footer__up-icon"></span>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="~/js/history.js" asp-append-version="true"></script>
+</body>
+</html>

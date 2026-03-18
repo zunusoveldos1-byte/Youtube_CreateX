@@ -1,0 +1,27 @@
+﻿@page
+@model Youtube_CreateX.Areas.Admin.Pages.Settings.IndexModel
+@{
+    ViewData["Title"] = "Настройки сайта";
+}
+<h1>Общие настройки</h1>
+<form method="post">
+    <div class="card">
+        <div class="card-body">
+            <div class="form-group">
+                <label>Название сайта</label>
+                <input asp-for="SiteName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Email для связи</label>
+                <input asp-for="ContactEmail" class="form-control" type="email" />
+            </div>
+            <div class="form-group">
+                <label>Телефон</label>
+                <input asp-for="Phone" class="form-control" />
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </div>
+    </div>
+</form>

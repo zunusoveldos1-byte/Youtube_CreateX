@@ -1,0 +1,297 @@
+﻿@page
+@model RegisterModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+@{
+    ViewData["Title"] = "Регистрация";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Youtube CreateX</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+    <style>
+        :root {
+            --brand-color: #FF5A30;
+            --dark-color: #1E212C;
+            --gray-color: #9ea2ae;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Общий стиль контейнера кнопок (для отступов) */
+        .external-auth-container {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* Современная кнопка Google */
+        .btn-google-modern {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            height: 50px;
+            background: white;
+            color: #5f6368; /* Цвет текста как в оригинале Google */
+            border: none;
+            border-radius: 4px; /* Небольшое скругление по вашему референсу */
+            cursor: pointer;
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            transition: all 0.2s ease;
+            /* Глубокая мягкая тень */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+            .btn-google-modern:hover {
+                background-color: #fcfcfc;
+                box-shadow: 0 7px 14px rgba(0,0,0,0.12), 0 3px 6px rgba(0,0,0,0.08);
+                transform: translateY(-1px);
+                color: #3c4043;
+            }
+
+            .btn-google-modern:active {
+                transform: translateY(0);
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                background-color: #f8f9fa;
+            }
+
+        .google-icon {
+            width: 22px;
+            height: 22px;
+        }
+
+        .split-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .split-left {
+            flex: 1;
+            background: url('/img/register-photo.jpg') center/cover no-repeat;
+        }
+
+        .split-right {
+            width: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background-color: #fff;
+        }
+
+        .brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--dark-color);
+        }
+
+            .brand span {
+                color: var(--brand-color);
+            }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--dark-color);
+        }
+
+        /* Поля ввода */
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Основная кнопка */
+        .btn-filled {
+            background-color: var(--brand-color);
+            color: #fff;
+            border: none;
+            padding: 12px;
+            font-weight: 600;
+            width: 100%;
+            transition: opacity 0.2s;
+        }
+
+            .btn-filled:hover {
+                opacity: 0.9;
+                color: white;
+            }
+
+        /* Разделитель "OR" */
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 1.5rem 0;
+            color: var(--gray-color);
+        }
+
+            .divider::before, .divider::after {
+                content: '';
+                flex: 1;
+                border-bottom: 1px solid #d7dadd;
+            }
+
+            .divider:not(:empty)::before {
+                margin-right: .5em;
+            }
+
+            .divider:not(:empty)::after {
+                margin-left: .5em;
+            }
+
+        /* Кнопка Google */
+        .btn-google {
+            width: 100%;
+            background: #fff;
+            color: var(--dark-color);
+            border: 1px solid #D7DADD;
+            padding: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 10px;
+        }
+
+            .btn-google i {
+                color: #DB4437;
+                font-size: 1.2rem;
+            }
+
+            .btn-google:hover {
+                background: #fdfdfd;
+                box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+                color: var(--dark-color);
+            }
+
+        @@media (max-width: 768px) {
+            .split-layout {
+                flex-direction: column;
+            }
+
+            .split-left {
+                min-height: 200px;
+                flex: none;
+            }
+
+            .split-right {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="split-layout">
+        <div class="split-left"></div>
+
+        <div class="split-right">
+            <div style="width: 100%; max-width: 400px;">
+                <div class="brand"><span>Youtube</span>CreateX</div>
+                <h1>@ViewData["Title"]</h1>
+
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="Input.UserName">Имя пользователя</label>
+                        <input asp-for="Input.UserName" class="form-control" placeholder="Придумайте имя" />
+                        <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Input.Email">Email</label>
+                        <input asp-for="Input.Email" class="form-control" placeholder="name@example.com" />
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Input.Password">Пароль</label>
+                        <input asp-for="Input.Password" type="password" class="form-control" placeholder="Минимум 6 символов" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Input.ConfirmPassword">Подтверждение пароля</label>
+                        <input asp-for="Input.ConfirmPassword" type="password" class="form-control" placeholder="Повторите пароль" />
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-filled mt-2">Зарегистрироваться</button>
+                </form>
+
+                @{
+                    var schemes = await SignInManager.GetExternalAuthenticationSchemesAsync();
+                    if (schemes.Any())
+                    {
+                        <div class="divider">or</div>
+
+                        <div class="external-auth-container">
+                            <form asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                                @foreach (var scheme in schemes)
+                                {
+                                    if (scheme.Name == "Google")
+                                    {
+                                        <button type="submit" class="btn-google-modern" name="provider" value="@scheme.Name" title="Войти через Google">
+                                            <svg class="google-icon" viewBox="0 0 48 48">
+                                                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
+                                                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+                                                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24s.92 7.54 2.56 10.78l7.97-6.19z" />
+                                                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+                                            </svg>
+                                            <span>Sign up with Google</span>
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        @* Для других провайдеров, если они появятся (VK, Facebook и т.д.) *@
+                                        <button type="submit" class="btn btn-outline-dark w-100 mb-3" name="provider" value="@scheme.Name">
+                                            Continue with @scheme.DisplayName
+                                        </button>
+                                    }
+                                }
+                            </form>
+                        </div>
+                    }
+                }
+
+                <div class="mt-4 text-center">
+                    <p>Уже есть аккаунт? <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl" style="color: var(--brand-color); font-weight: 600;">Войти</a></p>
+                </div>
+
+                <div class="mt-4">
+                    <a href="/" class="btn btn-outline-dark w-100">На главную</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+﻿@page
+@model Youtube_CreateX.Areas.Admin.Pages.Partners.CreateModel
+@{
+    ViewData["Title"] = "Добавление партнёра";
+}
+<h1>Добавить партнёра</h1>
+<form method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Partner.Name"></label>
+        <input asp-for="Partner.Name" class="form-control" />
+        <span asp-validation-for="Partner.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Partner.Description"></label>
+        <textarea asp-for="Partner.Description" class="form-control" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="Partner.Website">Веб-сайт</label>
+        <input asp-for="Partner.Website" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="LogoFile">Логотип</label>
+        <input asp-for="LogoFile" type="file" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Partner.DisplayOrder">Порядок отображения</label>
+        <input asp-for="Partner.DisplayOrder" type="number" class="form-control" />
+        <span asp-validation-for="Partner.DisplayOrder" class="text-danger"></span>
+    </div>
+    <div class="form-check">
+        <input asp-for="Partner.IsPublished" class="form-check-input" />
+        <label asp-for="Partner.IsPublished">Опубликовать</label>
+    </div>
+    <button type="submit" class="btn btn-success">Сохранить</button>
+    <a asp-page="Index" class="btn btn-secondary">Отмена</a>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

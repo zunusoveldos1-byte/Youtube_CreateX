@@ -1,0 +1,142 @@
+﻿@page
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model Youtube_CreateX.Pages.profileModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет | Createx</title>
+    <!-- Bootstrap 5 + Font Awesome + Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Подключаем отдельный CSS -->
+    <link rel="stylesheet" href="~/css/profile.css" asp-append-version="true">
+</head>
+<body>
+    <!-- Видеофон -->
+    <div class="video-bg">
+        <video autoplay muted loop playsinline>
+            <source src="~/video/construction-bg.mp4" type="video/mp4">
+            <!-- Если видео не загрузится, можно показать картинку -->
+            <img src="~/img/background-fallback.jpg" alt="Background">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a asp-page="/Index" class="logo">CREATE<span>X</span></a>
+                <nav class="nav">
+                    <a asp-page="/Index">Главная</a>
+                    <a asp-page="/AboutUs/About">О нас</a>
+                    <a asp-page="/Services/Services">Услуги</a>
+                    <a asp-page="/Work/Work">Работы</a>
+                    <a asp-page="/News/News">Новости</a>
+                    <a asp-page="/Contacts/Contacts">Контакты</a>
+                </nav>
+                <div class="header-contacts d-none d-lg-flex">
+                    <div class="contact-item">
+                        <div class="contact-info">
+                            <small>Позвоните нам</small>
+                            <a href="tel:4055550128">(405) 555-0128</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-info">
+                            <small>Напишите нам</small>
+                            <a href="mailto:hello@createx.com">hello@createx.com</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-auth">
+                    <a asp-area="Identity" asp-page="/Account/Login" class="btn" id="loginBtn"><i class="fas fa-sign-in-alt me-2"></i>Вход</a>
+                    <a asp-area="Identity" asp-page="/Account/Register" class="btn" id="registerBtn"><i class="fas fa-user-plus me-2"></i>Регистрация</a>
+                    <a href="/profile" class="profile-icon" id="profileIcon" style="display: none;">
+                        <i class="fa-regular fa-circle-user"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container profile-main">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <h1><i class="fas fa-user-circle me-3" style="color: #FF5A30;"></i>Личный кабинет</h1>
+                        <span class="badge bg-warning text-dark px-3 py-2" style="border-radius: 30px;">Online</span>
+                    </div>
+
+                    <form id="profileForm" method="post" enctype="multipart/form-data">
+                        <div class="avatar-wrapper">
+                            <div class="avatar-preview">
+                                <img id="avatarPreview" src="/img/default-avatar.png" alt="Аватар">
+                                <i class="fas fa-camera" style="position: absolute; bottom: 5px; right: 5px; background: #FF5A30; color: white; padding: 8px; border-radius: 50%; font-size: 14px;"></i>
+                            </div>
+                            <div class="avatar-upload">
+                                <label for="profileAvatar" class="form-label">Фото профиля</label>
+                                <input type="file" class="form-control form-control-sm" id="profileAvatar" name="AvatarFile" accept="image/*">
+                                <small class="text-muted">Рекомендуемый размер: 200x200px</small>
+                            </div>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label for="profileName" class="form-label"><i class="fas fa-user me-2" style="color: #FF5A30;"></i>Ваше имя</label>
+                                <input type="text" class="form-control" id="profileName" name="Name" placeholder="Иван Иванов">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="profileEmail" class="form-label"><i class="fas fa-envelope me-2" style="color: #FF5A30;"></i>Электронная почта</label>
+                                <input type="email" class="form-control" id="profileEmail" name="Email" readonly>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label"><i class="fas fa-phone me-2" style="color: #FF5A30;"></i>Телефон (дополнительно)</label>
+                                <input type="tel" class="form-control" id="profilePhone" placeholder="+1 (405) 555-0128">
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-wrap gap-3 mt-4">
+                            <button type="submit" class="btn btn-filled flex-fill"><i class="fas fa-save me-2"></i>Сохранить изменения</button>
+                            <button type="button" class="btn btn-logout flex-fill" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i>Выйти</button>
+                        </div>
+
+                        <hr class="my-4">
+                        <div class="text-center">
+                            @* <a asp-area="Identity" asp-page="/Account/Manage/ChangePassword" class="text-decoration-none" style="color: #FF5A30;">
+                                <i class="fas fa-key me-1"></i>Сменить пароль
+                            </a> *@
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast уведомление -->
+    <div class="toast-notification" id="toastMessage"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Пробрасываем состояние пользователя из серверной части -->
+    <script>
+        window.user = {
+            isAuthenticated: @(SignInManager.IsSignedIn(User) ? "true" : "false"),
+            userName: "@(User.Identity?.Name ?? "")",
+            userEmail: "@(User.Identity?.Name ?? "")" // в реальности нужно брать из базы
+        };
+    </script>
+
+    <!-- Подключаем отдельный JS -->
+    <script src="~/js/auth.js" asp-append-version="true"></script>
+</body>
+</html>

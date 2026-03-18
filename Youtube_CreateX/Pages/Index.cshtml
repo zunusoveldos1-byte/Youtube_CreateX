@@ -1,0 +1,537 @@
+﻿@page
+@model IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Главная страница";
+}
+
+<!-- Шапка -->
+<header class="header">
+    <div class="container">
+        <div class="header-inner">
+            <a asp-page="/Index" class="logo">CREATE<span>X</span></a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav">
+                <a asp-page="/AboutUs/About" class="active">О нас</a>
+                <a asp-page="/Services/Services">Услуги</a>
+                <a asp-page="/Work/Work">Работы</a>
+                <a asp-page="/News/News">Новости</a>
+                <a asp-page="/Contacts/Contacts">Контакты</a>
+            </nav>
+            <div class="header-contacts">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <img src="~/img/header/iPhone(1).svg" alt="Телефон">
+                    </div>
+                    <div class="contact-info">
+                        <small>Позвоните нам</small>
+                        <a href="tel:4055550128">(405) 555-0128</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <img src="~/img/header/Chat(1).svg" alt="Чат">
+                    </div>
+                    <div class="contact-info">
+                        <small>Напишите нам</small>
+                        <a href="mailto:hello@createx.com">hello@createx.com</a>
+                    </div>
+                </div>
+            </div>
+            <div class="header-auth">
+                <a asp-area="Identity" asp-page="/Account/Login" class="auth-link" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Вход</span>
+                </a>
+                <a asp-area="Identity" asp-page="/Account/Register" class="auth-link" id="registerBtn">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Регистрация</span>
+                </a>
+                <a href="/profile" class="profile-icon" id="profileIcon" style="display: none;">
+                    <i class="fa-regular fa-circle-user"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Карусель (Hero) -->
+<section class="hero" id="hero">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-indicators custom-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Слайд 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Слайд 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Слайд 3"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Слайд 4"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="slide-image" style="background-image: url('/img/hero/bg-image.svg')"></div>
+                <div class="slide-overlay"></div>
+                <div class="carousel-content">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1 class="hero-title">CREATE<span>X</span><br>СТРОИТЕЛЬСТВО</h1>
+                            <p class="hero-subtitle">Воплощаем мечты в реальность с точностью и мастерством. Наша команда экспертов предоставляет непревзойдённые строительные услуги.</p>
+                            <div class="hero-btns">
+                                <a href="/AboutUs/About" class="btn btn-outline">Узнать о нас</a>
+                                <a href="#contact-form" class="btn btn-filled">Отправить заявку</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="slide-image" style="background-image: url('/img/hero/pexels-lexovertoom-1109541(1).jpg')"></div>
+                <div class="slide-overlay"></div>
+                <div class="carousel-content">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1 class="hero-title">КАЧЕСТВО<span>X</span><br>ПРЕВОСХОДСТВО</h1>
+                            <p class="hero-subtitle">Мы сочетаем инновационный дизайн с экологичными строительными практиками для достижения исключительных результатов каждый раз.</p>
+                            <div class="hero-btns">
+                                <a href="/Services/Services" class="btn btn-outline">Наши услуги</a>
+                                <a href="#work" class="btn btn-filled">Наши проекты</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="slide-image" style="background-image: url('/img/hero/pexels-sejio402-27134625.jpg')"></div>
+                <div class="slide-overlay"></div>
+                <div class="carousel-content">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1 class="hero-title">ИННОВАЦИИ<span>X</span><br>ТЕХНОЛОГИИ</h1>
+                            <p class="hero-subtitle">Используем передовые технологии и материалы для создания зданий, которые выдерживают испытание временем.</p>
+                            <div class="hero-btns">
+                                <a href="#about" class="btn btn-outline">Наши технологии</a>
+                                <a href="/Contacts/Contacts" class="btn btn-filled">Получить консультацию</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="slide-image" style="background-image: url('/img/hero/pexels-valentin-ivantsov-2154772556-34100275.jpg')"></div>
+                <div class="slide-overlay"></div>
+                <div class="carousel-content">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1 class="hero-title">УСТОЙЧИВОЕ<span>X</span><br>СТРОИТЕЛЬСТВО</h1>
+                            <p class="hero-subtitle">Экологичные строительные решения, которые уважают нашу планету, обеспечивая при этом высочайшее качество и дизайн.</p>
+                            <div class="hero-btns">
+                                <a href="#services" class="btn btn-outline">Устойчивые решения</a>
+                                <a href="#contact-form" class="btn btn-filled">Начать проект</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="arrow arrow-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <img class="fas fa-chevron-left" src="/img/hero/prev-btn.svg" alt="Назад">
+        </button>
+        <button class="arrow arrow-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <img class="fas fa-chevron-right" src="/img/hero/next-btn_hover.svg" alt="Вперёд">
+        </button>
+    </div>
+</section>
+
+<main>
+    <!-- О нас -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Мы — Createx Construction Bureau</h2>
+            <p class="section-subtitle">Мы по праву считаемся лучшей строительной компанией в США.</p>
+            <div class="video-block">
+                <a href="~/img/about/about-video.mp4" class="play-btn" data-fancybox data-aspect-ratio="16 / 9">
+                    <img src="~/img/about/play-btn_large.svg" alt="Смотреть видео" class="play-icon">
+                </a> 
+            </div>
+        </div>
+    </section>
+
+    <!-- Наши основные ценности -->
+    <section class="values">
+        <div class="container">
+            <h2 class="section-title">Наши основные ценности</h2>
+            <p class="section-subtitle">Наша миссия — установить самые высокие стандарты в строительной сфере.</p>
+            <div class="values-inner">
+                <article class="value-item">
+                    <img class="value-icon" src="~/img/logo/ic-like.svg" alt="" aria-hidden="true">
+                    <h3 class="value-title">Качество</h3>
+                    <p class="value-text">Используем сертифицированные материалы и строгий многоуровневый контроль на каждом этапе возведения объекта.</p>
+                </article>
+
+                <article class="value-item">
+                    <img class="value-icon" src="~/img/logo/ic-hand.svg" alt="" aria-hidden="true">
+                    <h3 class="value-title">Безопасность</h3>
+                    <p class="value-text">Полное соблюдение строительных норм и техники безопасности. Мы строим объекты, которые прослужат десятилетиями.</p>
+                </article>
+
+                <article class="value-item">
+                    <img class="value-icon" src="~/img/logo/ic-slippers.svg" alt="" aria-hidden="true">
+                    <h3 class="value-title">Комфорт</h3>
+                    <p class="value-text">Продуманные планировки и современные инженерные решения для вашей продуктивной работы и уютной жизни.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма обратной связи -->
+    <section class="contact-form-section" id="contact-form">
+        <div class="container">
+            <div class="form-wrapper">
+                <h3 class="form-title">Хотите узнать больше? Задайте вопрос:</h3>
+                <form class="form">
+                    <div class="form-group">
+                        <label for="name">Имя</label>
+                        <input type="text" id="name" placeholder="Ваше имя">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" placeholder="Ваш телефон">
+                    </div>
+                    <div class="form-group message-group">
+                        <label for="message">Сообщение</label>
+                        <input type="text" id="message" placeholder="Ваше сообщение">
+                    </div>
+                    <button type="submit" class="btn btn-filled">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Наши услуги (динамически) -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Наши услуги</h2>
+            <p class="section-subtitle">Createx Construction Bureau — строительный гигант с полным спектром строительных услуг.</p>
+            <div class="services-grid">
+                @foreach (var service in Model.Services)
+                {
+                    <article class="service-card">
+                        <div class="service-icon-wrapper">
+                            <img class="service-icon" src="@(service.IconPath ?? "/img/our services/ic-construction.svg")" alt="@service.Title">
+                        </div>
+                        <h3 class="service-name">@service.Title</h3>
+                    </article>
+                }
+            </div>
+            <div class="services-footer">
+                <p>Узнайте больше о наших услугах</p>
+                <a asp-page="/Services/Services" class="btn btn-filled">Все услуги</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Избранные проекты (динамически) -->
+    <section class="projects" id="work">
+        <div class="container">
+            <div class="projects-header">
+                <h2 class="section-title">Посмотрите наши избранные проекты<br>и узнайте больше о наших работах</h2>
+                <div class="projects-arrows">
+                    <button class="arrow arrow-small arrow-prev" aria-label="Предыдущие проекты">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="arrow arrow-small arrow-next" aria-label="Следующие проекты">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="projects-grid">
+                @foreach (var project in Model.RecentProjects)
+                {
+                    <article class="project-card">
+                        <div class="project-img">
+                            <img src="@(project.ImagePath ?? "/img/site/image(3).jpg")" alt="@project.Title" loading="lazy">
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">@project.Title</h3>
+                            <p class="project-category">@project.Category</p>
+                            <a href="@(project.ProjectUrl ?? "#")" class="btn btn-outline-small">Смотреть проект</a>
+                        </div>
+                    </article>
+                }
+            </div>
+            <div class="projects-footer">
+                <span>Исследуйте все наши работы</span>
+                <a asp-page="/Work/Work" class="btn btn-filled">Портфолио</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Партнёры и отзывы -->
+    <section class="partners-testimonials">
+        <div class="container">
+            <div class="partners-section">
+                <h2 class="partners-title">При поддержке @Model.Partners.Count партнёров</h2>
+                <div class="partners-marquee">
+                    <div class="partners-track">
+                        @if (Model.Partners.Any())
+                        {
+                            for (int i = 0; i < 2; i++)
+                            {
+                                @foreach (var partner in Model.Partners)
+                                {
+                                    <div class="partner-logo">
+                                        <img src="@(partner.LogoPath ?? "/img/Supported by 12+ partners/client-logo.svg")" alt="@partner.Name">
+                                    </div>
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <div class="partner-logo">Нет партнёров</div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Блок отзывов с формой добавления -->
+            <div class="testimonials-with-image" id="testimonials-block">
+                <div class="testimonials-content">
+                    <div class="testimonials-header">
+                        <h2 class="testimonials-title">Что говорят наши клиенты</h2>
+                    </div>
+
+                    <div id="testimonials-list">
+                        <!-- JS будет рендерить отзывы -->
+                    </div>
+
+                    <div class="nav-dots" id="testimonial-dots">
+                        <!-- Точки навигации -->
+                    </div>
+
+                    <button id="add-testimonial-btn" class="btn btn-outline mt-3">Добавить отзыв</button>
+
+                    <!-- Мини-форма добавления отзыва (скрыта) -->
+                    <div id="testimonial-form" style="display: none; margin-top: 20px;">
+                        <h3>Оставить отзыв</h3>
+                        <form id="testimonial-form-inner">
+                            <div class="form-group">
+                                <label for="author-name">Ваше имя *</label>
+                                <input type="text" id="author-name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="author-position">Должность</label>
+                                <input type="text" id="author-position" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="author-company">Компания</label>
+                                <input type="text" id="author-company" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="testimonial-text">Ваш комментарий *</label>
+                                <textarea id="testimonial-text" class="form-control" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-filled">Отправить</button>
+                            <button type="button" id="cancel-testimonial" class="btn btn-outline">Отмена</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="testimonial-image">
+                    <img src="~/img/about/image(1).svg" alt="Отзывы клиентов" class="testimonial-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Некоторые факты и цифры -->
+    <section class="facts">
+        <div class="container">
+            <h2 class="section-title center">Некоторые факты и цифры</h2>
+            <div class="facts-grid">
+                <div class="fact-item">
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 100 100" aria-hidden="true">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="progress orange" cx="50" cy="50" r="45" style="stroke-dashoffset: 5;"></circle>
+                        </svg>
+                        <span class="fact-number">98%</span>
+                    </div>
+                    <p class="fact-desc">Полностью довольных клиентов</p>
+                </div>
+                <div class="fact-item">
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 100 100" aria-hidden="true">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="progress pink" cx="50" cy="50" r="45" style="stroke-dashoffset: 180;"></circle>
+                        </svg>
+                        <span class="fact-number">20</span>
+                    </div>
+                    <p class="fact-desc">Лет опыта</p>
+                </div>
+                <div class="fact-item">
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 100 100" aria-hidden="true">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="progress blue" cx="50" cy="50" r="45" style="stroke-dashoffset: 60;"></circle>
+                        </svg>
+                        <span class="fact-number">9452</span>
+                    </div>
+                    <p class="fact-desc">Отработанных часов</p>
+                </div>
+                <div class="fact-item">
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 100 100" aria-hidden="true">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="progress green" cx="50" cy="50" r="45" style="stroke-dashoffset: 0;"></circle>
+                        </svg>
+                        <span class="fact-number">100%</span>
+                    </div>
+                    <p class="fact-desc">Успешных проектов</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Последние новости (динамически) -->
+    <section class="news" id="news">
+        <div class="container">
+            <h2 class="section-title center">Последние новости</h2>
+            <div class="news-grid">
+                @if (Model.RecentNews.Any())
+                {
+                    var firstNews = Model.RecentNews.First();
+                    <article class="news-card large">
+                        <img src="@(firstNews.ImagePath ?? "/img/site/image(6).svg")" alt="@firstNews.Title" loading="lazy">
+                        <div class="news-content">
+                            <h3 class="news-title">@firstNews.Title</h3>
+                            <div class="news-meta">
+                                <span class="news-category">@firstNews.Category</span> |
+                                <time datetime="@firstNews.CreatedAt.ToString("yyyy-MM-dd")">@firstNews.CreatedAt.ToString("dd MMMM yyyy")</time> |
+                                <span class="news-comments">0 комментариев</span>
+                            </div>
+                            <p class="news-excerpt">@firstNews.Content</p>
+                        </div>
+                    </article>
+
+                    <div class="news-side">
+                        @foreach (var news in Model.RecentNews.Skip(1))
+                        {
+                            <article class="news-card small">
+                                <img src="@(news.ImagePath ?? "/img/site/image(7).svg")" alt="@news.Title" loading="lazy">
+                                <div class="news-content">
+                                    <h3 class="news-title">@news.Title</h3>
+                                    <div class="news-meta">
+                                        <span class="news-category">@news.Category</span> |
+                                        <time datetime="@news.CreatedAt.ToString("yyyy-MM-dd")">@news.CreatedAt.ToString("dd MMMM yyyy")</time>
+                                    </div>
+                                </div>
+                            </article>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p>Новостей пока нет.</p>
+                }
+            </div>
+            <div class="news-footer">
+                <p>Посмотреть все новости</p>
+                <a asp-page="/News/News" class="btn btn-filled">Все новости</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма в подвале -->
+    <section class="footer-form" id="contacts">
+        <div class="container">
+            <div class="footer-form-wrapper">
+                <form class="main-contact-form">
+                    <h3>Быстрый способ обсудить детали</h3>
+                    <div class="input-group">
+                        <label for="footer-name">Имя*</label>
+                        <input type="text" id="footer-name" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="footer-phone">Телефон*</label>
+                        <input type="tel" id="footer-phone" placeholder="Ваш номер телефона" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="footer-email">Email</label>
+                        <input type="email" id="footer-email" placeholder="Ваш рабочий email">
+                    </div>
+                    <div class="input-group">
+                        <label for="footer-message">Сообщение*</label>
+                        <textarea id="footer-message" placeholder="Ваше сообщение" required></textarea>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="agree" required>
+                        <label for="agree">Я согласен получать информацию от Createx Construction Bureau.</label>
+                    </div>
+                    <button type="submit" class="btn btn-filled">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Подвал -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-info">
+                <a asp-page="/Index" class="logo">CREATE<span>X</span></a>
+                <div class="socials">
+                    <a href="#" title="WhatsApp" aria-label="WhatsApp"><img src="~/img/footer/Whatsapp.svg" alt=""></a>
+                    <a href="#" title="Messenger" aria-label="Messenger"><img src="~/img/footer/Messanger.svg" alt=""></a>
+                    <a href="#" title="Facebook" aria-label="Facebook"><img src="~/img/footer/Facebook.svg" alt=""></a>
+                    <a href="#" title="Twitter" aria-label="Twitter"><img src="~/img/footer/Twitter.svg" alt=""></a>
+                    <a href="#" title="YouTube" aria-label="YouTube"><img src="~/img/footer/YouTube.svg" alt=""></a>
+                </div>
+                <p>Createx Construction Bureau успешно работает на строительном рынке США с 2000 года. Мы гордимся тем, что предлагаем вам качественное строительство и образцовый сервис.</p>
+            </div>
+            <div class="footer-subscribe">
+                <h3>Оставайтесь на связи</h3>
+                <div class="subscribe-box">
+                    <input type="email" placeholder="Ваш email" aria-label="Ваш email">
+                    <button class="btn btn-filled">Подписаться</button>
+                </div>
+                <p>*Подпишитесь на нашу рассылку, чтобы получать новости и ранние обновления от Createx Construction Bureau.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-col">
+                <h4>ГЛАВНЫЙ ОФИС</h4>
+                <address>
+                    <p>Адрес: 8502 Preston Rd. Inglewood, New York</p>
+                    <p>Телефон: <a href="tel:4055550128">(405) 555-0128</a></p>
+                    <p>Email: <a href="mailto:hello@createx.com">hello@createx.com</a></p>
+                </address>
+            </div>
+            <div class="footer-col">
+                <h4>О КОМПАНИИ</h4>
+                <nav class="footer-nav">
+                    <a asp-page="/AboutUs/About">О нас</a>
+                    <a href="#">Вакансии</a>
+                    <a asp-page="/Contacts/Contacts">Контакты</a>
+                </nav>
+            </div>
+            <div class="footer-col">
+                <h4>НАШ ОПЫТ</h4>
+                <nav class="footer-nav">
+                    <a asp-page="/Services/Services">Услуги</a>
+                    <a asp-page="/Work/Work">Работы</a>
+                    <a asp-page="/News/News">Новости</a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="footer-copyright">
+            <p>© Все права защищены. Сделано с <img class="heart-for__footer" src="~/img/footer/Heart(2).svg" alt="❤️" aria-hidden="true"> Createx Studio</p>
+            <a href="#top" class="go-top">Наверх <span>▲</span></a>
+        </div>
+    </div>
+</footer>
+
+@section Scripts {
+    <script src="~/js/site.js"></script>
+}

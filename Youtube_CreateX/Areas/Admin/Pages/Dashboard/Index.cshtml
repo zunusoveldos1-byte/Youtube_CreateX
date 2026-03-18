@@ -1,0 +1,179 @@
+﻿@page
+@model Youtube_CreateX.Areas.Admin.Pages.Dashboard.IndexModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<!-- Основные карточки статистики -->
+<div class="row">
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3>@Model.UsersCount</h3>
+                <p>Пользователей</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <a asp-page="/Users/Index" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3>@Model.NewsCount</h3>
+                <p>Новостей</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-newspaper"></i>
+            </div>
+            <a asp-page="/News/Index" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3>@Model.ServicesCount</h3>
+                <p>Услуг</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-cogs"></i>
+            </div>
+            <a asp-page="/Services/Index" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-danger">
+            <div class="inner">
+                <h3>@Model.ProjectsCount</h3>
+                <p>Проектов</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-briefcase"></i>
+            </div>
+            <a asp-page="/Projects/Index" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-secondary">
+            <div class="inner">
+                <h3>@Model.PartnersCount</h3>
+                <p>Партнёров</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-handshake"></i>
+            </div>
+            <a asp-page="/Partners/Index" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Секция категорий проектов -->
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Категории проектов</h3>
+            </div>
+            <div class="card-body">
+                @if (Model.ProjectCategories.Any())
+                {
+                    <ul class="list-group">
+                        @foreach (var cat in Model.ProjectCategories.OrderBy(c => c.Key))
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                @cat.Key
+                                <span class="badge bg-primary rounded-pill">@cat.Value</span>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p class="text-muted">Нет проектов с категориями</p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Секция категорий новостей -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Категории новостей</h3>
+            </div>
+            <div class="card-body">
+                @if (Model.NewsCategories.Any())
+                {
+                    <ul class="list-group">
+                        @foreach (var cat in Model.NewsCategories.OrderBy(c => c.Key))
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                @cat.Key
+                                <span class="badge bg-success rounded-pill">@cat.Value</span>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p class="text-muted">Нет новостей с категориями</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Последние добавленные записи (опционально) -->
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Последние проекты</h3>
+            </div>
+            <div class="card-body">
+                @if (Model.RecentProjects.Any())
+                {
+                    <ul class="list-group">
+                        @foreach (var project in Model.RecentProjects)
+                        {
+                            <li class="list-group-item">
+                                <a asp-page="/Projects/Edit" asp-route-id="@project.Id">@project.Title</a>
+                                <small class="text-muted float-end">@project.CreatedAt.ToShortDateString()</small>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p class="text-muted">Нет проектов</p>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Последние новости</h3>
+            </div>
+            <div class="card-body">
+                @if (Model.RecentNews.Any())
+                {
+                    <ul class="list-group">
+                        @foreach (var news in Model.RecentNews)
+                        {
+                            <li class="list-group-item">
+                                <a asp-page="/News/Edit" asp-route-id="@news.Id">@news.Title</a>
+                                <small class="text-muted float-end">@news.CreatedAt.ToShortDateString()</small>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p class="text-muted">Нет новостей</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
